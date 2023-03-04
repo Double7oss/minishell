@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lexer_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-kadd <hel-kadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:11:40 by hel-kadd          #+#    #+#             */
-/*   Updated: 2023/03/03 19:11:40 by hel-kadd         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:12:39 by hel-kadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int is_whitespace(char c )
     return (0);
 }
 
-t_tokens *lexer_advenced_with_token(t_lexer *lexer, t_token *token)
-{
-    lexer_advenced(lexer);
-    return (token);
-}
+// t_tokens *lexer_advenced_with_token(t_lexer *lexer, t_token *token)
+// {
+//     lexer_advenced(lexer);
+//     return (token);
+// }
 
-char *lexer_get_current_char_as_string(t_lexer *lexer)
-{
+// char *lexer_get_current_char_as_string(t_lexer *lexer)
+// {
     
-}
+// }
