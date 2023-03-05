@@ -10,22 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lexer.h"
+#include "minishell.h"
 
-int is_whitespace(char c )
+//init_tokens
+t_token *initialize_tokens(char *value, int type)
 {
-    if ( c == ' ' || (c > 8 && c < 14))
-        return (1);
-    return (0);
+    t_token *token;
+
+    if (!value)
+        return (NULL);
+    token = (t_token *)malloc(sizeof(t_token));
+    if (!token)
+        return (NULL);
+    token->type = type;
+    token->value = value;
+    token.next = NULL;
+    return (token);
 }
 
-// t_tokens *lexer_advenced_with_token(t_lexer *lexer, t_token *token)
-// {
-//     lexer_advenced(lexer);
-//     return (token);
-// }
+void ft_add_back_token(t_token *new_token, t_token **list_token)
+{
+    t_token *tmp;
 
-// char *lexer_get_current_char_as_string(t_lexer *lexer)
-// {
-    
-// }
+    tmp = *liest_token;
+    if (!tmp)
+    {
+        *list_token = new_token
+        return (NULL);
+    }
+    while (tmp->next != NULL)
+        tmp = tmp->next;
+    tmp->next = new_token;
+}

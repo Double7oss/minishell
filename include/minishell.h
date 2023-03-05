@@ -24,9 +24,10 @@ typedef struct s_token {
         TOKEN_SEMI;
         TOKEN_GP,
         TOKEN_DP,
-        TOKEN_&,
+        TOKEN_AND,
         TOKEN_ENV,
         TOKEN_HERE_DOC,
+        TOKEN_NEW_LINE,
     } type;
 	char *value;
 	struct s_token *next;
@@ -37,5 +38,13 @@ typedef struct s_redirection {
 	char *filename;
 	struct s_redirection *next;
 } t_redirection;
+
+typedef struct s_location {
+    int start;
+    int destination;
+} t_loc;
+
+//str function for help parsing tokens
+char	*ft_strchr(const char *s, int c);
 
 #endif

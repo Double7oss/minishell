@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_utils.h"
+#include "minishell.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -22,4 +22,39 @@ size_t	ft_strlen(const char *str)
 		i++;
 	}
 	return (i);
+}
+
+int ft_is_digit(char c)
+{
+    if (c >='0' && c <='9')
+        return(1);
+    return (0);
+}
+
+int     ft_isalpha(char c)
+{
+    if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+        return (1);
+    return (0);
+}
+
+int is_whitespace(char c)
+{
+    if (c == ' ' || (c >= 9 && c <= 13))
+        return (0);
+    return (1);
+}
+
+int is_special_char(char c)
+{
+    if (ft_strchr("><|; ", c))
+        return (1);
+    return (0);
+}
+
+int ft_redirection(t_token *token)
+{
+    if (token->value[0] != '<' && token->value != '>')
+        return (0);
+    return (1);
 }
