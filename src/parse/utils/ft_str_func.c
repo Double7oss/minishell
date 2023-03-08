@@ -27,3 +27,48 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s + i);
 	return (NULL);
 }
+
+size_t ft_strnlen(char *str, size_t len)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0' && i < len)
+		i++;
+	return (i);
+}
+
+char *ft_strndup(const char *s, size_t n)
+{
+    size_t len;
+	char *copy;
+
+    len = ft_strnlen(s, n);
+    copy = malloc(len + 1);
+    if (copy == NULL)
+        return (NULL);
+    ft_memcpy(copy, s, len);
+    copy[len] = '\0';
+    return copy;
+}
+
+char	*ft_strdup(const char *src)
+{
+	size_t	i;
+	char	*str;
+
+	i = ft_strlen(src);
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (!str)
+	{
+		return (0);
+	}
+	i = 0;
+	while (src[i] != '\0')
+	{
+		str[i] = src[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

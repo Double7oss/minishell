@@ -28,6 +28,11 @@ t_token *initialize_tokens(char *value, int type)
     return (token);
 }
 
+void add_to_token_list(t_token **token, int type,char *value)
+{
+    ft_add_back_token(token, initialize_tokens(ft_strdup(value), type));
+}
+
 void ft_add_back_token(t_token *new_token, t_token **list_token)
 {
     t_token *tmp;

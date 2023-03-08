@@ -97,8 +97,8 @@ t_token *ft_new_token(char *str, int type);
 t_token *lexer(char *input);
 
 t_red    *create_red_node(t_red *red, t_token **token);
-void    ft_add_red(t_smpl_cmd *cmd, t_token **token);
-t_arg	*create_arg_node(t_token **token);    
+void    ft_add_red(t_smcreate_arg_node(tpl_cmd *cmd, t_token **token);
+t_arg	*_token **token);    
 void    add_args(t_smpl_cmd *smpl_cmd, t_token **token);
 t_smpl_cmd	*ft_init_simple_cmd(void);
 t_smpl_cmd  *create_smpl_cmd(t_token **token);

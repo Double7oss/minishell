@@ -53,7 +53,7 @@ void	create_new_token(t_token **head, int len, char *input, t_token **current, e
 //         }
 //          var->start = var->i + 1;
 //     }
- 
+
 //     var->i++;
 //     while (input[var->i] && input[var->i] != '\'')
 //         var->i++;
@@ -79,7 +79,7 @@ void	create_new_token(t_token **head, int len, char *input, t_token **current, e
 // void    handle_double_quotes(t_token **head, t_var *var, char *input, t_token **current)
 // {
 //     if (var->i > var->start)
-//     {
+//     {\
 //         if (!*head) 
 //         {
 //             *head = ft_new_token(strndup(input + var->start, var->i - var->start), WORD);

@@ -58,3 +58,17 @@ int ft_redirection(t_token *token)
         return (0);
     return (1);
 }
+
+int find_second_quote(char *line, int i, int *nb_q, int q)
+{
+    int a;
+
+    a = 0;
+    a = i + 1;
+    *nb_q += 1;
+    while (line[a] && line[a] != q)
+        a++;
+    if (line[a] == q)
+        *nb_q += 1;
+    return (a - i);
+}
