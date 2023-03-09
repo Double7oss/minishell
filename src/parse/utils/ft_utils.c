@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-kadd <hel-kadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:44:12 by hel-kadd          #+#    #+#             */
-/*   Updated: 2023/03/03 19:44:12 by hel-kadd         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:00:11 by hel-kadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int is_special_char(char c)
 
 int ft_redirection(t_token *token)
 {
-    if (token->value[0] != '<' && token->value != '>')
+    if (token->value[0] != '<' && token->value[0] != '>')
         return (0);
     return (1);
 }
@@ -62,8 +62,8 @@ int ft_redirection(t_token *token)
 int is_charset(char c)
 {
     if (c == '\'' || c == '\"' || c == '<' || c == '>' || c == '|'
-		|| c == '$' || ft_isspace(c) || c == '\n' || c == '\0')
-        return (1)
+		|| c == '$' || is_whitespace(c) || c == '\n' || c == '\0')
+        return (1);
     return (0);
 }
 

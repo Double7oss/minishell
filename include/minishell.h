@@ -6,12 +6,14 @@
 /*   By: hel-kadd <hel-kadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 20:38:24 by hel-kadd          #+#    #+#             */
-/*   Updated: 2023/03/04 19:01:48 by hel-kadd         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:11:06 by hel-kadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 #define MINISHELL_H
+
+#include <stdlib.h>
 
 typedef struct s_token {
     enum {
@@ -21,7 +23,7 @@ typedef struct s_token {
         TOKEN_GREATER,
         TOKEN_GREATGREATER,
         TOKEN_PIPE,
-        TOKEN_SEMI;
+        TOKEN_SEMI,
         TOKEN_GP,
         TOKEN_DP,
         TOKEN_RED_INFILE,
@@ -49,7 +51,7 @@ typedef struct s_location {
 } t_des;
 
 //token fuction
-void ft_add_back_token(t_token *new_token, t_token **list_token);
+void ft_add_back_token(t_token **list_token, t_token *new_token);
 t_token *initialize_tokens(char *value, int type);
 void add_token(t_token **token, int type,char *value, int len);
 //str function for help parsing tokens

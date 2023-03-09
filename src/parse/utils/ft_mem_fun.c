@@ -6,11 +6,11 @@
 /*   By: hel-kadd <hel-kadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 21:30:42 by hel-kadd          #+#    #+#             */
-/*   Updated: 2023/03/05 21:30:42 by hel-kadd         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:17:11 by hel-kadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../include/minishell.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

@@ -6,7 +6,7 @@
 /*   By: hel-kadd <hel-kadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 22:36:40 by hel-kadd          #+#    #+#             */
-/*   Updated: 2023/03/04 22:36:40 by hel-kadd         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:28:53 by hel-kadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-size_t ft_strnlen(char *str, size_t len)
+size_t ft_strnlen(const char *str, size_t len)
 {
 	int i;
 
@@ -36,6 +36,25 @@ size_t ft_strnlen(char *str, size_t len)
 	while (str[i] != '\0' && i < len)
 		i++;
 	return (i);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char	*s;
+	char	*d;
+	size_t	i;
+
+	i = 0;
+	d = (char *)dst;
+	s = (char *)src;
+	if (!dst && !src)
+		return (NULL);
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dst);
 }
 
 char *ft_strndup(const char *s, size_t n)
