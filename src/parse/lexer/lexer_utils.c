@@ -28,9 +28,9 @@ t_token *initialize_tokens(char *value, int type)
     return (token);
 }
 
-void add_to_token_list(t_token **token, int type,char *value)
+void add_token(t_token **token, int type, char *value, int len)
 {
-    ft_add_back_token(token, initialize_tokens(ft_strdup(value), type));
+    ft_add_back_token(token, initialize_tokens(ft_strndup(value , len), type));
 }
 
 void ft_add_back_token(t_token *new_token, t_token **list_token)
@@ -47,3 +47,5 @@ void ft_add_back_token(t_token *new_token, t_token **list_token)
         tmp = tmp->next;
     tmp->next = new_token;
 }
+
+void token_skip_whitespace()

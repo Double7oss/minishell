@@ -12,36 +12,80 @@
 
 #include "minishell.h"
 
-//funcrion to handle redirection and here_doc tokens
-void lexer_semi_pipe(t_token **token, t_des *des, char *line)
+//funcrion handle pipe and semi
+int lexer_semi_pipe(t_token **token, int i, char *line)
 {
-    if (line[des.l] == ';')
-        add_token(token, TOKEN_SEMI,";");
-    if (line[des.l] == '|')
-        add_token(token, TOKEN_PIPE,"|");
-    des->s = des->l + 1;
+    if (line[i] == ';')
+        add_token(token, TOKEN_SEMI, line + i, 1);
+    if (line[i] == '|')
+        add_token(token, TOKEN_PIPE, line + i, 1);
+    return (i);
 }
 
-void lexer_redirection(t_token **token,t_des *des, char *line)
+//function to handle redirection 
+int lexer_redirection(t_token **token, int i, char *line)
 {
-    if (line[des->l] == '<')
+    if (line[i] == '<')
     {
-        if (line[des->l + 1] == '<')
-            add_token(token, TOKEN_HERE_DOC, "<<");
+        if (line[i + 1] == '<')
+            add_token(token, TOKEN_HERE_DOC, line + i++, 2);
         else
-            add_token(token, TOKEN_RED_INFIE, "<<");
+            add_token(token, TOKEN_RED_INFIE, line + i, 1);
+        i++;
     }
     else 
     {
-        add_token(token, TOKEN_RED_OUTFILE, ">");
+        add_token(token, TOKEN_RED_OUTFILE, line + i, 1);
+        i++;
     }
-    des->s = des->l + 1;
+    return i;
 }
 
 //to handle new line
-void lexer_new_line(t_token **token, t_des *des, char *line)
+int lexer_new_line(t_token **token,int i, char *line)
 {
-    add_token(token, TOKEN_NEW_LINE, line + des + l);
+    add_token(token, TOKEN_NEW_LINE, line + i, 1);
+}
+
+//function to handele word
+int lexer_is_word(t_token **token, char *line)
+{
+    int i;
+
+    i = 0;
+    while (!is_charset(line[i]))
+        i++;
+    add_token(token, TOKEN_STR, line + i);
+    return i;
+}
+
+//function last word
+void lexer_last_word(t_token **token, int i, int s, char *line)
+{
+    if (i >= s)
+        add_token(token, TOKEN_STR, line  + s, i - s + 1);
+}
+
+t_token *lexer(char *input)
+{
+    t_token *head;
+    int i;
+    int s;
+
+    i = 0;
+    head = NULL;
+    while (is_whitespace(input[i]))
+        i++;
+    s = i;
+    while (input[i])
+    {
+        if (!is_charset(input[i]))
+            s = lexer_is_word(&head, input[i]) + 1;
+        else if (input[i] == '|' || input[i] == ';')
+            s = lexer_semi_pipe(&head, i, input) + 1;
+        if (input[i] == '\0' || input[i + 1] == '\n')
+            lexer_last_word(&head, i, s, input);
+    }
 }
 
 

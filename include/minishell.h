@@ -33,7 +33,7 @@ typedef struct s_token {
         TOKEN_SINGLE_QUOTE,
         TOKEN_DOUBLE_QUOTE,
     } type;
-	char *value;;
+	char *value;
 	struct s_token *next;
 } t_token;
 
@@ -51,7 +51,7 @@ typedef struct s_location {
 //token fuction
 void ft_add_back_token(t_token *new_token, t_token **list_token);
 t_token *initialize_tokens(char *value, int type);
-void add_token(t_token **token, int type,char *value);
+void add_token(t_token **token, int type,char *value, int len);
 //str function for help parsing tokens
 char	*ft_strchr(const char *s, int c);
 char *ft_strndup(const char *s, size_t n);
@@ -59,5 +59,8 @@ size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *src);
 //mem function for help parsing tokens
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+//utils function
+int is_charset(char c);
+int is_whitespace(char c);
 
 #endif

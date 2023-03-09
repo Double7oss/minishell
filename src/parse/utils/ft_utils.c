@@ -59,6 +59,14 @@ int ft_redirection(t_token *token)
     return (1);
 }
 
+int is_charset(char c)
+{
+    if (c == '\'' || c == '\"' || c == '<' || c == '>' || c == '|'
+		|| c == '$' || ft_isspace(c) || c == '\n' || c == '\0')
+        return (1)
+    return (0);
+}
+
 int find_second_quote(char *line, int i, int *nb_q, int q)
 {
     int a;
